@@ -17,6 +17,7 @@ export default function FormRestaurante(toast) {
     const [imagenes, setImagenes]=useState([]);
     const {toastRef}=toast;
     const [datos, setDatos]=useState(valoresDefault);
+    const navigation = useNavigation();
     const onSubmit = () => {
         if(isEmpty(datos.nombre)|| isEmpty(datos.direccion)||
         isEmpty(datos.descripcion)){
@@ -40,6 +41,7 @@ export default function FormRestaurante(toast) {
                 })
                 .then(()=>{
                     toastRef.current.show("Restaurante Registrado");
+                    navigation.navigate('Restaurantes');
                 }).catch(()=>{
                     toastRef.current.show("No se pudo registrar el restaurante");
                 })
